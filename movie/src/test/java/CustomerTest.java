@@ -45,6 +45,20 @@ class CustomerTest {
     }
 
     @Test
+    public void statementForRegularMovieRentalForMoreThan3Days() {
+        // arrange
+        customer.addRental(createRentalFor(Movie.REGULAR, 4));
+
+        // act
+
+        // assert
+        assertThat(customer.statement(), is("Rental Record for NAME_NOT_IMPORTANT\n"
+                + "\tTITLE_NOT_IMPORTANT\t5.0\n"
+                + "Amount owed is 5.0\n"
+                + "You earned 1 frequent renter points"));
+    }
+
+    @Test
     public void statementForRegularMovieRentalForLessThan3Days() {
         // arrange
         customer.addRental(createRentalFor(Movie.REGULAR, 2));
